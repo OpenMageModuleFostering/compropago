@@ -5,19 +5,21 @@
 ?>
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
-<?php $compropagoId = Mage::getSingleton('core/session')->getCompropagoId(); ?>
+<?php $compropagoId = Mage::getSingleton('core/session')->getCompropagoId();
+ ?>
 
 <div id="receipt" class="receipt">
   <div class="page-title">
-      <h3>¡Felicitaciones! Su pedido ha sido generado correctamente.</h3>
+      <h3 style="font-size: 1.0em;">¡Felicitaciones! Su pedido ha sido generado correctamente.</h3>
   </div>
   <?php if ($this->getOrderId()):?>
-  <?php if ($this->getCanViewOrder()) :?>
+  <?php if ($compropagoId == '') :?>
       <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
   <?php  else :?>   
     <div id="compropagodContainer" style="width: 100%;">      
       <iframe style="width: 100%; height: 865px;>" id="compropagodFrame"  src="https://www.compropago.com/comprobante/?confirmation_id=<?php echo $compropagoId; ?>"  frameborder="0" scrolling="yes"> </iframe>
     </div>
+    <?php Mage::getSingleton('core/session')->setCompropagoId(''); ?>
   <?php endif;?>
   <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
       <p>
