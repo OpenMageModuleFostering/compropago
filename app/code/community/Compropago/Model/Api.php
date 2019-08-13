@@ -11,7 +11,7 @@ class Compropago_Model_Api
      * URL del servicio de PagoFacil en ambiente de produccion
      * @var string 
      */
-    protected $_url = 'http://api.compropago.com/v1/charges';
+    protected $_url = 'https://api.compropago.com/v1/charges';
 
     /**
      * respuesta sin parsear del servicio
@@ -86,7 +86,7 @@ class Compropago_Model_Api
             Mage::throwException("El servicio de Compropago no se encuentra disponible.");
         }
         
-        if ($response['type'] == "error")
+        if (isset($response['type']) && $response['type'] == "error")
         {            
             $errorMessage = $response['message'] . "\n";                        
             Mage::throwException($errorMessage);

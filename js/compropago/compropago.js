@@ -1,12 +1,3 @@
-function imprimir(){
-  var objeto=document.getElementById('receipt');
-  var ventana=window.open('','popimpr');
-  ventana.document.write(objeto.innerHTML); 
-  ventana.document.close(); 
-  ventana.print(); 
-  ventana.close(); 
-}
-
 function seleccionar(t,internal_name){
 	var class_name = t.className,
 		seleccionados = document.getElementsByClassName("seleccion_store"),
@@ -21,3 +12,28 @@ function seleccionar(t,internal_name){
 		store_code.value = internal_name;
 	}		
 };
+
+function loadImage (t) {
+	var input = document.getElementById('p_method_compropago');
+
+	if(input.checked){
+		t.hide();
+	} else {
+		t.show();
+	}
+};
+
+window.onload = function(){	
+	$$("#co-payment-form input[type=radio]").each(function(input){
+        input.observe("click", function(){
+            var input = document.getElementById('p_method_compropago'),
+            	image = document.getElementById('image_providers');
+            
+			if(input.checked){
+				image.hide();
+			} else {
+				image.show();
+			}
+		})
+	})
+}

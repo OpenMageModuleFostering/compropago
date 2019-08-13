@@ -11,9 +11,9 @@
        $_model = $this->getMethod();    
        $_getProviders = $_model->getProviders(); 
 ?>
-<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/compropago/compropago.css'); ?>" />
+<img id="image_providers" onload="loadImage(this);" src="<?php echo $this->getSkinUrl('images/compropago/providers.png') ?>" class="image_providers_compropago">
 <ul id="payment_form_<?php  echo $_code ?>" style="display:none" >       
-<label class="label-instructions">Selecciona un establecimiento para realizar el pago en efectivo</label>
+	<label class="label-instructions">Selecciona un establecimiento para realizar el pago en efectivo:</label>
         <?php  if (!$_model->showLogoProviders())
     	{ ?>     
 	       <li>
@@ -26,11 +26,11 @@
 	       </li>
 	    <?php } else { ?>
 	    	<li>	    
-		        <div class="row stores-compact" style="padding: 5px 15px; opacity: 1;" id="<?php echo $_code ?>_store">
+		        <div class="row stores-compact" style="padding: 5px 15px; opacity: 1; width:100%;" id="<?php echo $_code ?>_store">
 		       		<?php foreach ($_getProviders as $_provider): ?> 
 		       			<!--<php if($_provider['internal_name'] == 'OXXO' || $_provider['internal_name'] == 'SEVEN_ELEVEN' || $_provider['internal_name'] == 'EXTRA' || $_provider['internal_name'] == 'CHEDRAUI'): ?>-->
 					        <div class="element-box">
-					            <label for="<?php echo $_code ?>_<?php echo $_provider['internal_name'] ?>" class="provider-description " onclick="seleccionar(this,'<?php echo $_provider['internal_name'] ?>');">
+					            <label for="<?php echo $_code ?>_<?php echo $_provider['internal_name'] ?>" class="provider-description <?php echo $_provider['internal_name'] == 'OXXO' ? 'seleccion_store' : '' ?>" onclick="seleccionar(this,'<?php echo $_provider['internal_name'] ?>');">
 					            	<img src="<?php echo $_provider['image_medium'] ?>" class="image_provider">
 					           	</label>
 					        </div>
