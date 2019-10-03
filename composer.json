@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/ComproPago",
+    "name": "OpenMageModuleFostering\/ComproPago",
     "type": "magento-module",
     "license": "OSL-v3.0",
     "homepage": "",
     "description": "Extension for cash payments in Compropago.",
     "authors": [
-    {
-        "name": "Oswaldo Lopez Garcia",
-        "email": "waldix@compropago.com"
-    }
-],
+        {
+            "name": "Oswaldo Lopez Garcia",
+            "email": "waldix@compropago.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
